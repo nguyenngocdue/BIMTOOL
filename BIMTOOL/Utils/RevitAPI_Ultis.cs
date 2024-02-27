@@ -1,6 +1,10 @@
 ﻿using Autodesk.Revit.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 namespace STR
 {
      class RevitAPI_Ultis
@@ -13,30 +17,6 @@ namespace STR
                 ids.Add(element.Id);
             }
             return ids;
-        }
-
-        public static List<Element> SelectAllElementsInDocument(Document doc, BuiltInCategory category, bool isNotElementType = true)
-        {
-            ElementFilter filter = new ElementCategoryFilter(category);
-
-            IEnumerable<Element> elements;
-
-            if (isNotElementType)
-            {
-                elements = new FilteredElementCollector(doc)
-                    .WherePasses(filter)
-                    .WhereElementIsNotElementType()
-                    .ToElements();
-            }
-            else
-            {
-                elements = new FilteredElementCollector(doc)
-                    .WherePasses(filter)
-                    .WhereElementIsElementType()
-                    .ToElements();
-            }
-
-            return elements.ToList();
         }
 
     }
