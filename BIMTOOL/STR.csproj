@@ -59,14 +59,20 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Geometry\GeometryFaces.cs" />
+    <Compile Include="Message\MessageUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Geometry\Geometry.cs" />
     <Compile Include="Selection\SelectionFramings.cs" />
     <Compile Include="Selection\Selection.cs" />
     <Compile Include="Utils\FilterSelection.cs" />
-    <Compile Include="Utils\Log.cs" />
-    <Compile Include="Utils\RevitAPIUltisGeometry.cs" />
-    <Compile Include="Utils\RevitAPI_Ultis.cs" />
+    <Compile Include="Message\Log.cs" />
+    <Compile Include="Utils\RevitAPIUtilsGeometry.cs" />
+    <Compile Include="Utils\RevitAPIUtilsCommon.cs" />
+    <Compile Include="Utils\Supports\ElementConverter.cs" />
+    <Compile Include="Utils\ParentFlanarFaces.cs" />
+    <Compile Include="Utils\Supports\Selections.cs" />
+    <Compile Include="Utils\Supports\FlanarFaces.cs" />
+    <Compile Include="Utils\Supports\Solids.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

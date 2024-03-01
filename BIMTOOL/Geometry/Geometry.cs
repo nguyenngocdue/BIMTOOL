@@ -14,27 +14,19 @@ namespace STR
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            Reference reference = uidoc.Selection.PickObject(Autodesk.Revit.UI.Selection.ObjectType.Element, new FilterFrammings());
-            FamilyInstance framings = doc.GetElement(reference) as FamilyInstance;
+            List<Element> allElements = Selections.GetElementsByRectangle(uidoc);
 
             Options options = new Options();
             options.IncludeNonVisibleObjects = true;
 
-            Solid solids = RevitAPIUltisGeometry.GetSolidInstance(framings, options);
-            if (solids != null)
-            {
-                // Đoạn mã dưới đây sẽ hiển thị một MessageBox thông báo về số lượng Face trong Solid
-                int faceCount = 0;
-                foreach (Face face in solids.Faces)
-                {
-                    faceCount++;
-                }
-                MessageBox.Show("Số lượng Face trong Solid: " + faceCount.ToString());
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy Solid!");
-            }
+            List<FamilyInstance> familyInstances = ElementConverter.ConvertToFamilyInstances(allElements);
+            List<Solid> solids = Solids.GetSolidsFromFamilyInstances(familyInstances, options);
+
+            List<PlanarFace> planarFaces = FlanarFaces.GetTopBotPlanFacesFromSolidOrSolids(solids);
+
+            MessageUtils.ShowMessageGeoPlannarFaces(planarFaces);
+
+
             return 0;
         }
     }

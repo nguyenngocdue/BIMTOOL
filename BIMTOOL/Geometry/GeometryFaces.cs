@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace STR
 {
@@ -20,11 +21,7 @@ namespace STR
             Reference reference = uidoc.Selection.PickObject(Autodesk.Revit.UI.Selection.ObjectType.Element, new FilterFrammings());
             FamilyInstance familyins = doc.GetElement(reference) as FamilyInstance;
 
-            Options options = new Options();
-            options.IncludeNonVisibleObjects = true;
 
-            Solid solids = RevitAPIUltisGeometry.GetSolidInstance(familyins, options);
-            List<PlanarFace> planarFaces = RevitAPIUltisGeometry.GetPlanarFaceFromSolid(solids);
             return 0;
         }
     }

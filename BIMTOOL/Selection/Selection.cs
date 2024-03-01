@@ -12,7 +12,7 @@ namespace STR
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             IList<Element> list = uidoc.Selection.PickElementsByRectangle(new FilterFrammings());
-            IList<ElementId> ids = RevitAPI_Ultis.ToIlistId(list);
+            IList<ElementId> ids = RevitAPIUtilsCommon.ToIlistId(list);
             uidoc.Selection.SetElementIds(ids);
             return 0;
         }

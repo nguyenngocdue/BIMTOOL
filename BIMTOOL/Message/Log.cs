@@ -14,7 +14,7 @@ namespace STR
             sb.AppendLine("Details of Planar Faces:");
             foreach (PlanarFace planarFace in planarfaces)
             {
-                XYZ normal = planarFace.XVector;
+                XYZ normal = planarFace.FaceNormal;
                 sb.AppendLine("Normal Vector: " + normal.ToString());
             }
             return sb.ToString();
